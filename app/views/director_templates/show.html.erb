@@ -2,9 +2,23 @@
   Director #<%= @the_director.id %> details
 </h1>
 
-<a href="/directors">
+<div><a href="/directors">
   Go back
-</a>
+</a></div>
+
+<div><a href="/directors/delete/<%=@the_director.id%>">
+  Delete director
+</a></div>
+
+<hr>
+
+<form action="/directors/update/<%=@the_director.id%>" method="patch">
+<div><label for="name">Name</label> <input id="name" type="text" name="director_name" value=<%=@the_director.name%>></div>
+<div><label for="dob">Dob</label> <input id="dob" type="date" name="director_dob" placeholder="mm/dd/yyyy" value=<%=@the_director.dob%>></div>
+<div><label for="bio">Bio</label> <textarea id="bio" type="text" name="director_bio" rows="3"><%=@the_director.bio%></textarea></div>
+<div><label for="img">Image</label> <input id="img" type="text" name="director_img" value=<%=@the_director.image%>></div>
+<div><button>Update director</button></div>
+</form>
 
 <hr>
 
