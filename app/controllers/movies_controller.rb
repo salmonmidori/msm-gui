@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
   end
   def update
     the_id = params.fetch("path_id")
-    existing_movie = Movie.where({ :id => the_id})
+    existing_movie = Movie.where({ :id => the_id})[0]
     existing_movie.title = params.fetch("movie_title")
     existing_movie.year = params.fetch("movie_year")
     existing_movie.duration = params.fetch("movie_duration")
@@ -36,7 +36,7 @@ class MoviesController < ApplicationController
     existing_movie.image = params.fetch("movie_img")
     existing_movie.director_id = params.fetch("movie_director_id")
     existing_movie.save
-    redirect_to("/movies/#{path_id}")
+    redirect_to("/movies/#{the_id}")
   end
   def delete
     the_id = params.fetch("path_id")

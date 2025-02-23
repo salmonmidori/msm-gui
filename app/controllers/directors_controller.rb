@@ -49,13 +49,13 @@ class DirectorsController < ApplicationController
 
   def update
     the_id = params.fetch("path_id")
-    existing_director = Director.where({ :id => the_id})
+    existing_director = Director.where({ :id => the_id})[0]
     existing_director.name = params.fetch("director_name")
     existing_director.dob = params.fetch("director_dob")
     existing_director.bio = params.fetch("director_bio")
     existing_director.image = params.fetch("director_img")
     existing_director.save
-    redirect_to("/directors/#{path_id}")
+    redirect_to("/directors/#{the_id}")
   end
 
   def delete

@@ -28,13 +28,13 @@ class ActorsController < ApplicationController
   
   def update
     the_id = params.fetch("path_id")
-    existing_actor = Actor.where({ :id => the_id})
+    existing_actor = Actor.where({ :id => the_id})[0]
     existing_actor.name = params.fetch("actor_name")
     existing_actor.dob = params.fetch("actor_dob")
     existing_actor.bio = params.fetch("actor_bio")
     existing_actor.image = params.fetch("actor_img")
     existing_actor.save
-    redirect_to("/actors/#{path_id}")
+    redirect_to("/actors/#{the_id}")
   end
 
   def delete
